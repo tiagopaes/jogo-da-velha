@@ -35,6 +35,7 @@
 		var jogada = true;
 		var tab = [true,true,true,true,true,true,true,true,true];
 		//Math.floor(Math.random() * 9)		
+		var win = [0,0,0,0,0,0,0,0,0];
 		
 		function userChoice (user){			
 			i=(user - 1);
@@ -43,13 +44,32 @@
 				if (jogada){				
 					document.getElementById(pos[i]).src = "image-x.png";
 					this.jogada = false;
+					this.win [i] += 1;
 
 				}else{
 					document.getElementById(pos[i]).src = "image-ball.png";
 					this.jogada = true;
+					this.win [i] += -1;
 				}
 				this.tab[i]=false;
-			}					
+			}	
+			ganhador(0,1,2);
+			ganhador(0,4,8);
+			ganhador(0,3,6);
+			ganhador(3,4,5);
+			ganhador(6,7,8);
+			ganhador(6,4,2);
+			ganhador(1,4,7);
+			ganhador(2,5,8);				
+		}
+
+		function ganhador(x,y,z) {
+			
+			if (this.win[x]+this.win[y]+this.win[z]== 3){
+				alert("Ganhou");
+			}else if (this.win[x]+win[y]+win[z]== -3) {
+				alert("Ganhou");
+			}
 		}
 
 	</script>
