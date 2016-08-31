@@ -11,8 +11,8 @@ var jogadores = [
 		win: 1,
 		ganhou: function(){
 		alert("X ganhou");
-	}
-},
+		}
+	},
 
 	{
 		img: "image-ball.png",
@@ -67,7 +67,7 @@ function userChoice (user){
 		[2,5,8]
 	];	
 			
-	for (var i = winPos.length - 1; i >= 0; i--) {
+	for (var i = 0; i <= winPos.length; i++) {
 		//console.log("verificando", i);
 		var ganhou = verificaGanhador(winPos[i]);
 		if(ganhou){
