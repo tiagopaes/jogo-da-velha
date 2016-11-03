@@ -1,6 +1,6 @@
 table {
-	width: 600px;
-	height: 600px;
+	width: 620px;
+	height: 620px;
 	position:absolute;
 	top:50%;
 	left: 50%;
@@ -13,14 +13,9 @@ table {
 table td {
 	border: solid 10px #606060;
 	text-align: center;
-	width: 200px;
-	height: 200px;
-	font-size: 80px;
+	width: 170px;
+	height: 170px;
+	font-size: 75px;
   	font-family: "Comic Sans", Comic Sans MS, cursive;
   	color: #ff0000;			
-}
-
-img {
-	width: 100px;
-	height: 100px;
 }
