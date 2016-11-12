@@ -6,6 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<div id='scoreboard'>		
+		<span class='scoreboard'>X</span>&nbsp&nbsp
+		 - &nbsp<span id='X'>0</span>&nbsp&nbsp X &nbsp&nbsp<span id="O">0</span> -&nbsp 
+		<span class='scoreboard'>O</span>
+	</div>
 	<table>
 		<tr>
       		<td id="position0"></td>
@@ -22,8 +27,12 @@
 			<td id="position7"></td>
 			<td id="position8"></td>
 		</tr>
-
 	</table>
+	<aside id='won'>
+		<span id='iconWon'></span><br>
+		<div id='textWon'>Venceu!</div><br>
+		<input type="button" name="restart" id='restart' value='Jogar Novamente'>
+	</aside>
 	<script type="text/javascript" src="functions.js"></script>
 </body>
 </html>
