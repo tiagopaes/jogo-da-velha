@@ -1,6 +1,4 @@
-"use strict";
-
-let board = document.querySelector('#board');
+'use strict';
 
 function Game(table) {
 
@@ -93,6 +91,8 @@ function Game(table) {
     }
 
     init(table);
-};
+}
 
-var game = new Game(board);
+let board = document.querySelector('#board');
+
+let game = new Game(board);
