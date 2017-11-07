@@ -1,6 +1,8 @@
 'use strict';
 
-function Game(table) {
+function Game() {
+
+    const _this = this;
 
     let board = [];
     let turn = true;
@@ -32,7 +34,24 @@ function Game(table) {
         }
     ];
 
-    function init(table) {
+    let AI = {
+        playing: false,
+        move: function() {
+            let boardLength = board.length;
+            let boardPosition = Math.floor(Math.random() * boardLength);
+    
+            if (board[boardPosition].status) {
+                _this.move(boardPosition, true);
+                return;
+            }
+            _this.AI.move();
+        }
+    };
+
+    _this.AI = AI;
+
+    function init() {
+        let table = document.querySelector('#board');
         let cells = table.querySelectorAll('td');
 
         for (var i = 0; i < cells.length; i ++) {
@@ -48,9 +67,29 @@ function Game(table) {
                 value.element.addEventListener('click', () => move(index));
             });
         })();
+
+        let checkbox = document.querySelector('#onePlayer');
+        checkbox.addEventListener('click', () => {
+            if (checkbox.checked) {
+                AI.playing = true;
+            }
+        });
+
+        let aiStart = document.querySelector('#start');
+        aiStart.addEventListener('click', () => {
+            if (aiStart.checked) {
+                if (AI.playing) {
+                    AI.move();
+                } else {
+                    aiStart.checked = false;
+                }
+            }
+        });
     }
 
-    function move(index) {
+    _this.move = move;
+
+    function move(index, iaMove) {
         if (gameOver) return false;
 
         let player = 0;
@@ -66,8 +105,10 @@ function Game(table) {
             turn = currentPlayer.turn;
         }
 
-        if (checkWinner()) {
-            gameOver = true;
+        if (checkWinner()) gameOver = true;
+
+        if (!iaMove && AI.playing) {
+            setTimeout(AI.move, 1000);
         }
     }
 
@@ -90,9 +131,7 @@ function Game(table) {
         return result;
     }
 
-    init(table);
+    init();
 }
 
-let board = document.querySelector('#board');
-
-let game = new Game(board);
+let game = new Game();
